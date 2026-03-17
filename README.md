@@ -65,6 +65,9 @@ En vez de poner `<link>` pones `<a>`. Quedaria asi:
 
 2. ¿Que es una promesa? ¿Como se relaciona con la asincronia en javascript?
 3. ¿Qué es el protocolo HTTP y cuáles son sus métodos más comunes? ¿Como se relaciona con html y javascript?
+
+Los metodos mas comunes de http son `GET`, `POST`, `PUT` y `DELETE`.
+
 4. ¿Que tipos de inputs conoces? Citalos y describe que atributos pueden acompañar cada uno.
 ```html
     <input type="text" placeholder="Texto">
@@ -75,8 +78,8 @@ En vez de poner `<link>` pones `<a>`. Quedaria asi:
     <input type="checkbox" checked>
 ```
 
-- Escribe un texto donde placeholder es el lugar donde se produce. 
-- Escribe un numero, con min y max establezco un intervalo de datos que lo acepte
+- Escribe un texto donde `placeholder` es el lugar donde se produce. 
+- Escribe un numero, con `min` y `max` establezco un intervalo de datos que lo acepte
 - Escribe un email
 - Escribe una contraseña, cuyos caracteres minimos son 6
 - Escribe una fecha
