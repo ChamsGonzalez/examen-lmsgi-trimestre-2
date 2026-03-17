@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+      <thead>
+        <tr>
+          <th>Mensajes</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <form action="/enviar" method="POST">
+      <label>Mensajes</label>
+      <input type="text" name="mensajes" required>
+    
+      <button type="submit">Enviar</button>
+    </form>
+    <ul id="lista"></ul>
+    
+    <form id="formulario">
+      <input type="text" id="mensajes" placeholder="mensajes" required>
+      <button type="submit">Enviar</button>
+    </form>
+    
+    <script>
+    document.getElementById('formulario').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const mensaje = document.getElementById('mensajes').value;
+      console.log('Mensaje ingresado:', menasaje);
+    });
+        const tbody = document.getElementById('tbody');
+    
+        datos.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<th>${item.mensajes}</th>`;
+        tbody.appendChild(tr);
+        });
+
+    </script>
+    
+</body>
+</html>
