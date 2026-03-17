@@ -1,6 +1,0 @@
-services:
-  alpine:
-    image: alpine:latest
-    ports:
-      - "3000:3000"
-    stdin_open: true
