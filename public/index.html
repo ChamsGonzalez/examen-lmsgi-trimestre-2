@@ -51,33 +51,35 @@
       <tbody>
         <tr>
           <td>1</td>
-          <td>user</td>
+          <td id="user">user</td>
           <td>hOLA</td>
         </tr>
       </tbody>
     </table>
 
     <script>
-        fetch('/api/mensajes', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify()
-        });
+      fetch('/api/mensajes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify()
+      });
         
-        datos.forEach(item => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${item.ejemplo}</td>`;
-            tbody.appendChild(tr);
-        });
+      datos.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${item.user}</td>`;
+          tbody.appendChild(tr);
+      });
 
-        document.getElementById('formulario').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const mensaje = document.getElementById('mensajes').value;
-        console.log('Mensaje ingresado:', mensajes);
-        });
-        const tbody = document.getElementById('tbody');
+      document.getElementById('formulario').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const mensaje = document.getElementById('mensaje').value;
+      console.log('Mensaje ingresado:', mensaje);
+      });
+      const tbody = document.getElementById('tbody');
         
     </script>
     
 </body>
 </html>
+
+<script>
