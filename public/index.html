@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+      <thead>
+        <tr id="row">
+          <th>Mensajes</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr>
+            <td id="ejemplo">Ejemplo</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+    <form action="/enviar" method="POST">
+        <label>Mensajes</label>
+        <input type="text" name="mensajes" required>
+        
+        <button type="submit">Enviar</button>
+    </form>
+    <ul id="lista"></ul>
+    
+    <form id="formulario">
+      <input type="text" id="mensajes" placeholder="mensajes" required>
+      <button type="submit">Enviar</button>
+    </form>
+    
+</body>
+</html>
