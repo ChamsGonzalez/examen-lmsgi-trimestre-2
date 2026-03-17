@@ -58,6 +58,10 @@ Puedes responder a estas preguntas en este mismo archivo.
 ```html
 <link href="http://example.org">Entrar a mi sitio web</link>
 ```
+En vez de poner `<link>` pones `<a>`. Quedaria asi:
+```html
+<a href="http://example.org">Entrar a mi sitio web</a>
+```
 
 2. ¿Que es una promesa? ¿Como se relaciona con la asincronia en javascript?
 3. ¿Qué es el protocolo HTTP y cuáles son sus métodos más comunes? ¿Como se relaciona con html y javascript?
