@@ -8,7 +8,7 @@
 <body>
     <table>
       <thead>
-        <tr id="row">
+        <tr id="tr">
           <th>Mensajes</th>
         </tr>
       </thead>
@@ -18,7 +18,11 @@
         </tr>
       </tbody>
     </table>
-
+    
+    <form id="formulario">
+      <input type="text" id="mensajes" placeholder="mensajes" required>
+      <button type="submit">Enviar</button>
+    </form>
     
     <form action="/enviar" method="POST">
         <label>Mensajes</label>
@@ -28,10 +32,52 @@
     </form>
     <ul id="lista"></ul>
     
-    <form id="formulario">
-      <input type="text" id="mensajes" placeholder="mensajes" required>
+
+    <form action="/get" method="GET">
+      <label>Mensajes</label>
+      <input type="text" name="mensajes" required>
+
       <button type="submit">Enviar</button>
     </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuarios</th>
+          <th>Mensaje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>user</td>
+          <td>hOLA</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+        fetch('/api/mensajes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify()
+        });
+        
+        datos.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${item.ejemplo}</td>`;
+            tbody.appendChild(tr);
+        });
+
+        document.getElementById('formulario').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const mensaje = document.getElementById('mensajes').value;
+        console.log('Mensaje ingresado:', mensajes);
+        });
+        const tbody = document.getElementById('tbody');
+        
+    </script>
     
 </body>
 </html>
