@@ -12,18 +12,19 @@
           <th>Mensajes</th>
         </tr>
       </thead>
-      <tbody id="tbody">
-        <tr>
-            <td id="ejemplo">Ejemplo</td>
-        </tr>
-      </tbody>
     </table>
     
     <form id="formulario">
       <input type="text" id="mensajes" placeholder="mensajes" required>
       <button type="submit">Enviar</button>
     </form>
-    
+
+    <form action="/get" method="GET">
+      <label>Mensajes</label>
+      <input type="text" name="mensajes" required>
+      
+      <button type="submit">Enviar</button>
+    </form>
     <form action="/enviar" method="POST">
         <label>Mensajes</label>
         <input type="text" name="mensajes" required>
@@ -32,14 +33,6 @@
     </form>
     <ul id="lista"></ul>
     
-
-    <form action="/get" method="GET">
-      <label>Mensajes</label>
-      <input type="text" name="mensajes" required>
-
-      <button type="submit">Enviar</button>
-    </form>
-
     <table>
       <thead>
         <tr>
@@ -48,7 +41,7 @@
           <th>Mensaje</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="tbody">
         <tr>
           <td>1</td>
           <td id="user">user</td>
@@ -59,11 +52,11 @@
 
     <script>
       fetch('/api/mensajes', {
-        method: 'POST',
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify()
       });
-        
+
       datos.forEach(item => {
           const tr = document.createElement('tr');
           tr.innerHTML = `<td>${item.user}</td>`;
@@ -72,7 +65,7 @@
 
       document.getElementById('formulario').addEventListener('submit', (e) => {
       e.preventDefault();
-      const mensaje = document.getElementById('mensaje').value;
+      const mensaje = document.getElementById('mensajes').value;
       console.log('Mensaje ingresado:', mensaje);
       });
       const tbody = document.getElementById('tbody');
@@ -81,5 +74,3 @@
     
 </body>
 </html>
-
-<script>
