@@ -73,9 +73,14 @@ En vez de poner `<link>` pones `<a>`. Quedaria asi:
     <input type="password" minlength="6">
     <input type="date">
     <input type="checkbox" checked>
-    <input type="radio" name="opcion" value="1">
-    <input type="file" accept="image/*">
 ```
+
+- Escribe un texto donde placeholder es el lugar donde se produce. 
+- Escribe un numero, con min y max establezco un intervalo de datos que lo acepte
+- Escribe un email
+- Escribe una contraseña, cuyos caracteres minimos son 6
+- Escribe una fecha
+- Señala una opcion si la pulsas
 
 ## Extra (1 punto)
 
