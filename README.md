@@ -66,6 +66,16 @@ En vez de poner `<link>` pones `<a>`. Quedaria asi:
 2. ¿Que es una promesa? ¿Como se relaciona con la asincronia en javascript?
 3. ¿Qué es el protocolo HTTP y cuáles son sus métodos más comunes? ¿Como se relaciona con html y javascript?
 4. ¿Que tipos de inputs conoces? Citalos y describe que atributos pueden acompañar cada uno.
+```html
+    <input type="text" placeholder="Texto">
+    <input type="number" min="0" max="100">
+    <input type="email" required>
+    <input type="password" minlength="6">
+    <input type="date">
+    <input type="checkbox" checked>
+    <input type="radio" name="opcion" value="1">
+    <input type="file" accept="image/*">
+```
 
 ## Extra (1 punto)
 
