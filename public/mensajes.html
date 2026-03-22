@@ -1,76 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mensajes Dinámicos</title>
 </head>
 <body>
-    <table>
-      <thead>
-        <tr id="tr">
-          <th>Mensajes</th>
-        </tr>
-      </thead>
-    </table>
+    <h1>Mensajes Dinámicos</h1>
     
-    <form id="formulario">
-      <input type="text" id="mensajes" placeholder="mensajes" required>
-      <button type="submit">Enviar</button>
-    </form>
+    <h2>Tabla de Mensajes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Mensaje</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
 
-    <form action="/get" method="GET">
-      <label>Mensajes</label>
-      <input type="text" name="mensajes" required>
-      
-      <button type="submit">Enviar</button>
-    </form>
-    <form action="/enviar" method="POST">
-        <label>Mensajes</label>
-        <input type="text" name="mensajes" required>
+    <h2>Enviar Mensaje</h2>
+    <form id="formulario">
+        <label for="user">Usuario:</label>
+        <input type="text" id="user" required>
+        
+        <label for="mensaje">Mensaje:</label>
+        <input type="text" id="mensaje" required>
         
         <button type="submit">Enviar</button>
     </form>
-    <ul id="lista"></ul>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Usuarios</th>
-          <th>Mensaje</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-        <tr>
-          <td>1</td>
-          <td id="user">user</td>
-          <td>hOLA</td>
-        </tr>
-      </tbody>
-    </table>
 
     <script>
-      fetch('/api/mensajes', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify()
-      });
+        const tbody = document.getElementById('tbody');
 
-      datos.forEach(item => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `<td>${item.user}</td>`;
-          tbody.appendChild(tr);
-      });
+        // Paso 1: Cargar mensajes con fetch
+        async function cargarMensajes() {
+            const respuesta = await fetch('/api/mensajes');
+            const mensajes = await respuesta.json();
+            
+            tbody.innerHTML = '';
+            
+            mensajes.forEach(msg => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${msg.id}</td>
+                    <td>${msg.user}</td>
+                    <td>${msg.content}</td>
+                    <td>${msg.created_at || '-'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
 
-      document.getElementById('formulario').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const mensaje = document.getElementById('mensajes').value;
-      console.log('Mensaje ingresado:', mensaje);
-      });
-      const tbody = document.getElementById('tbody');
-        
+        // Paso 2: Enviar mensaje con JavaScript y actualizar tabla sin recargar
+        document.getElementById('formulario').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const user = document.getElementById('user').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            await fetch('/api/mensajes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user, mensaje, access_password: 'xaphym' })
+            });
+            
+            document.getElementById('formulario').reset();
+            cargarMensajes();
+        });
+
+        // Paso 3: Cargar al iniciar
+        cargarMensajes();
     </script>
-    
 </body>
 </html>

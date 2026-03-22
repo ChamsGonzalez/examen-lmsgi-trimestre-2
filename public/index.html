@@ -1,53 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mensajes</title>
+    <!-- Enlace a la biblioteca de estilos oat.css para dar formato a la tabla y formularios -->
+    <link rel="stylesheet" href="https://unpkg.com/@knadh/oat/oat.min.css">
 </head>
 <body>
-    <table>
-      <thead>
-        <tr id="tr">
-          <th>Mensajes</th>
-        </tr>
-      </thead>
-    </table>
-    
-    <form id="formulario">
-      <input type="text" id="mensajes" placeholder="mensajes" required>
-      <button type="submit">Enviar</button>
-    </form>
-
-    <form action="/get" method="GET">
-      <label>Mensajes</label>
-      <input type="text" name="mensajes" required>
-      
-      <button type="submit">Enviar</button>
-    </form>
-    <form action="/enviar" method="POST">
-        <label>Mensajes</label>
-        <input type="text" name="mensajes" required>
+    <div class="container">
+        <h1>Mensajes</h1>
         
-        <button type="submit">Enviar</button>
-    </form>
-    <ul id="lista"></ul>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Usuarios</th>
-          <th>Mensaje</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-        <tr>
-          <td>1</td>
-          <td id="user">user</td>
-          <td>hOLA</td>
-        </tr>
-      </tbody>
-    </table>
+        <h2>Tabla de Mensajes</h2>
+        <!-- 
+            Tabla HTML para mostrar los mensajes obtenidos del endpoint GET /api/mensajes
+            El servidor devolverá un array JSON con objetos que tienen: id, user, content, created_at
+            En el método HTTP básico, la tabla se muestra estáticamente o se actualiza tras recargar la página
+        -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Mensaje</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">Cargando mensajes...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Enviar Mensaje</h2>
+        <!-- 
+            Formulario HTTP básico que envía datos mediante método POST al endpoint /api/mensajes
+            El formulario usa submit tradicional, lo que provoca una recarga de la página al enviar
+            El servidor espera recibir en el body: user, mensaje y access_password
+        -->
+        <form action="/api/mensajes" method="POST">
+            <!-- Campo oculto con la contraseña de acceso al servidor (xaphym) -->
+            <input type="hidden" name="access_password" value="xaphym">
+            
+            <!-- Campo para el nombre de usuario -->
+            <label for="user">Usuario:</label>
+            <input type="text" id="user" name="user" required>
+            
+            <!-- Campo para el contenido del mensaje -->
+            <label for="mensaje">Mensaje:</label>
+            <input type="text" id="mensaje" name="mensaje" required>
+            
+            <!-- Botón para enviar el formulario -->
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
 </body>
 </html>
